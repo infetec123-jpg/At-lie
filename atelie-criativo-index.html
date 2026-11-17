@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ateliê Criativo | Curso de Costura</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --crimson:#7B1328;
+  --crimson-dark:#5a0d1c;
+  --gold:#C9A84C;
+  --gold-light:#e2c878;
+  --black:#0e0e0e;
+  --off-white:#f9f5ef;
+  --text-mid:#4a3a3a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--off-white);color:#1a1a1a;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,5,5,0.95);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 48px;
+  border-bottom:1px solid rgba(201,168,76,0.2);
+}
+.nav-logo img{height:60px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  color:rgba(255,255,255,0.8);text-decoration:none;
+  font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  background:var(--gold)!important;color:var(--crimson-dark)!important;
+  padding:10px 22px!important;border-radius:2px;font-weight:600!important;
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--crimson-dark) 0%,var(--crimson) 55%,#3d0a13 100%);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;padding:120px 80px 80px;
+  position:relative;overflow:hidden;
+}
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);
+  color:var(--gold);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 16px;border-radius:2px;margin-bottom:28px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,4.5vw,64px);font-weight:300;
+  color:#fff;line-height:1.2;margin-bottom:24px;
+}
+.hero-title strong{font-weight:600;color:var(--gold);display:block}
+.hero-tagline{
+  font-size:15px;font-weight:300;font-style:italic;
+  color:rgba(255,255,255,0.75);line-height:1.8;
+  max-width:480px;margin-bottom:40px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--gold);color:var(--crimson-dark);
+  padding:16px 36px;font-family:'Montserrat',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  border:none;border-radius:2px;cursor:pointer;text-decoration:none;
+  transition:all .3s;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.35)}
+.btn-secondary{
+  border:1px solid rgba(255,255,255,0.4);color:#fff;
+  padding:16px 36px;font-size:13px;font-weight:500;
+  letter-spacing:1px;text-transform:uppercase;border-radius:2px;
+  text-decoration:none;transition:all .3s;display:inline-block;
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-photo{
+  position:relative;z-index:2;
+  display:flex;justify-content:center;align-items:flex-end;
+}
+.hero-photo img{
+  width:100%;max-width:480px;
+  border-radius:4px 4px 0 0;object-fit:cover;
+  filter:drop-shadow(0 20px 60px rgba(0,0,0,0.5));display:block;
+}
+.hero-photo::before{
+  content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);
+  width:80%;height:4px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+
+/* ── FRASE ── */
+#frase{background:var(--black);padding:64px 48px;text-align:center}
+.frase-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,2.5vw,30px);font-weight:300;font-style:italic;
+  color:rgba(255,255,255,0.9);max-width:800px;margin:0 auto;line-height:1.7;
+}
+.frase-text span{color:var(--gold);font-weight:400}
+.frase-divider{width:60px;height:2px;background:var(--gold);margin:24px auto 0}
+
+/* ── LABELS & TÍTULOS ── */
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:3px;
+  text-transform:uppercase;color:var(--crimson);margin-bottom:12px;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,3.5vw,50px);font-weight:400;
+  color:#1a1a1a;line-height:1.25;margin-bottom:20px;
+}
+.section-title em{color:var(--crimson);font-style:normal}
+.section-sub{
+  font-size:15px;color:var(--text-mid);line-height:1.8;
+  max-width:560px;margin-bottom:56px;
+}
+
+/* ── DORES ── */
+#problema{padding:100px 80px;background:var(--off-white)}
+.dores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.dor-card{
+  background:#fff;border:1px solid rgba(123,19,40,0.1);
+  border-left:4px solid var(--crimson);
+  padding:32px 28px;border-radius:2px;transition:all .3s;
+}
+.dor-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(123,19,40,0.1);border-left-color:var(--gold)}
+.dor-icon{font-size:28px;margin-bottom:16px}
+.dor-title{
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;
+  color:var(--crimson-dark);margin-bottom:10px;
+}
+.dor-desc{font-size:13px;line-height:1.7;color:var(--text-mid)}
+
+/* ── SOLUÇÃO ── */
+#solucao{
+  background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));
+  padding:100px 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.solucao-content .section-label{color:var(--gold-light)}
+.solucao-content .section-title{color:#fff}
+.solucao-content .section-sub{color:rgba(255,255,255,0.75);margin-bottom:40px}
+.solucao-items{display:flex;flex-direction:column;gap:20px}
+.solucao-item{display:flex;gap:16px;align-items:flex-start}
+.solucao-num{
+  min-width:36px;height:36px;
+  background:rgba(201,168,76,0.15);border:1px solid var(--gold);
+  color:var(--gold);font-size:13px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:2px;flex-shrink:0;
+}
+.solucao-text strong{display:block;color:#fff;font-size:14px;font-weight:600;margin-bottom:4px}
+.solucao-text span{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+.solucao-visual{
+  background:rgba(0,0,0,0.2);border:1px solid rgba(201,168,76,0.25);
+  border-radius:4px;padding:48px 40px;text-align:center;
+}
+.solucao-visual img{width:130px;border-radius:4px;margin-bottom:28px}
+.solucao-visual blockquote{
+  font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;
+  color:rgba(255,255,255,0.9);line-height:1.65;
+  border-left:3px solid var(--gold);padding-left:20px;text-align:left;
+}
+.solucao-visual cite{
+  display:block;margin-top:20px;font-size:12px;font-style:normal;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);
+}
+
+/* ── SOBRE ── */
+#sobre{
+  padding:100px 80px;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;
+  background:#fff;
+}
+.sobre-photo{position:relative}
+.sobre-photo img{width:100%;border-radius:4px;display:block}
+.sobre-photo::after{
+  content:'';position:absolute;bottom:-16px;right:-16px;
+  width:70%;height:70%;border:2px solid var(--gold);border-radius:4px;z-index:-1;
+}
+.sobre-photo-badge{
+  position:absolute;bottom:24px;left:-24px;
+  background:var(--crimson);color:#fff;
+  padding:16px 24px;border-radius:2px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+.sobre-photo-badge strong{
+  display:block;font-size:30px;
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+}
+.sobre-photo-badge span{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:.85}
+.sobre-content .section-sub{max-width:100%}
+.sobre-valores{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.valor-tag{
+  border:1px solid var(--crimson);color:var(--crimson);
+  padding:7px 16px;font-size:12px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;
+}
+
+/* ── STATS ── */
+#resultados{background:var(--black);padding:80px;text-align:center}
+#resultados .section-label{color:var(--gold)}
+#resultados .section-title{color:#fff;margin:0 auto 56px;max-width:600px}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;
+  max-width:900px;margin:0 auto;
+}
+.stat-item{padding:40px 24px;background:var(--black);transition:background .3s}
+.stat-item:hover{background:rgba(123,19,40,0.35)}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;
+  color:var(--gold);line-height:1;margin-bottom:8px;
+}
+.stat-label{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;line-height:1.5}
+
+/* ── DESEJOS ── */
+#desejos{padding:100px 80px;background:var(--off-white)}
+.desejos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px}
+.desejo-card{
+  text-align:center;padding:40px 28px;background:#fff;
+  border-radius:4px;border-bottom:3px solid transparent;transition:all .3s;
+}
+.desejo-card:hover{border-bottom-color:var(--gold);box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-4px)}
+.desejo-emoji{font-size:36px;margin-bottom:16px}
+.desejo-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--crimson-dark);margin-bottom:10px}
+.desejo-desc{font-size:13px;color:var(--text-mid);line-height:1.7}
+
+/* ── CTA ── */
+#cta{
+  background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));
+  padding:100px 80px;text-align:center;position:relative;overflow:hidden;
+}
+#cta::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C9A84C' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-inner{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.cta-inner .section-label{color:var(--gold-light)}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,4vw,54px);font-weight:300;
+  color:#fff;line-height:1.3;margin-bottom:20px;
+}
+.cta-title strong{color:var(--gold);font-weight:600}
+.cta-sub{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:48px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;text-decoration:none;
+  padding:18px 40px;font-size:14px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;border-radius:2px;transition:all .3s;
+}
+.btn-whatsapp:hover{background:#1db954;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4)}
+.btn-email{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(255,255,255,0.4);color:#fff;text-decoration:none;
+  padding:18px 36px;font-size:13px;font-weight:500;
+  letter-spacing:1px;text-transform:uppercase;border-radius:2px;transition:all .3s;
+}
+.btn-email:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{
+  background:#050202;padding:48px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(201,168,76,0.15);
+}
+.footer-logo img{height:40px;opacity:.85;border-radius:3px}
+.footer-text{font-size:12px;color:rgba(255,255,255,0.4);text-align:center;line-height:1.8}
+.footer-oab{font-size:12px;color:rgba(255,255,255,0.35);text-align:right;line-height:1.8}
+
+/* ── RESPONSIVO ── */
+@media(max-width:960px){
+  nav{padding:14px 24px}
+  .nav-links{display:none}
+  #hero{grid-template-columns:1fr;padding:100px 32px 60px;text-align:center}
+  .hero-tagline{margin:0 auto 40px}
+  .hero-actions{justify-content:center}
+  .hero-photo{margin-top:48px}
+  #frase{padding:48px 24px}
+  #problema{padding:72px 32px}
+  #solucao{grid-template-columns:1fr;padding:72px 32px;gap:48px}
+  #sobre{grid-template-columns:1fr;padding:72px 32px;gap:56px}
+  .sobre-photo-badge{left:0}
+  #resultados{padding:72px 32px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  #desejos{padding:72px 32px}
+  .desejos-grid{grid-template-columns:1fr 1fr}
+  #cta{padding:72px 32px}
+  footer{flex-direction:column;gap:24px;text-align:center;padding:40px 24px}
+  .footer-oab{text-align:center}
+}
+@media(max-width:540px){
+  .desejos-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-photo img{max-width:100%}
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+}
+
+.whatsapp-float img {
+    width: 35px;
+    margin-top: 12px;
+}
+
+</style>
+</head>
+<body>
+<nav><div class="nav-logo" style="color:#C9A84C;font-family:Georgia,serif;font-size:22px;font-weight:bold">ATELIÊ <span style="color:white">CRIATIVO</span></div><ul class="nav-links"><li><a href="#problema">Consertos</a></li><li><a href="#solucao">Serviços</a></li><li><a href="#sobre">O curso</a></li><li><a href="#localizacao" class="nav-cta">Localização</a></li></ul></nav>
+<section id="hero"><div class="hero-content"><div class="hero-badge">🧵 Curso de Costura</div><h1 class="hero-title">Aprenda a criar.<br/><strong>Costure seus sonhos.</strong></h1><p class="hero-tagline">Desenvolva habilidades de costura, aprenda técnicas práticas e descubra como transformar tecidos em peças únicas. Seu primeiro ponto pode ser o começo de uma grande ideia!</p><div class="hero-actions"><a href="#solucao" class="btn-primary">Conheça os serviços</a><a href="#sobre" class="btn-secondary">Sobre o curso</a></div></div><div class="hero-photo"><img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=900&q=85" alt="Máquina de costura e materiais"/></div></section>
+<section id="frase"><p class="frase-text">Cada peça tem uma história.<br/><span>Aprenda a dar novos pontos e novas possibilidades aos tecidos.</span></p><div class="frase-divider"></div></section>
+<section id="problema"><p class="section-label">Pequenos reparos, grandes soluções</p><h2 class="section-title">O que pode ser <em>consertado?</em></h2><p class="section-sub">Conheça alguns exemplos de peças que podem receber ajustes e reparos para voltar a ser usadas.</p><div class="dores-grid">
+<div class="dor-card"><div class="dor-icon">👖</div><div class="dor-title">Calças</div><p class="dor-desc">Ajuste de comprimento, cintura e barra.</p></div>
+<div class="dor-card"><div class="dor-icon">👗</div><div class="dor-title">Vestidos</div><p class="dor-desc">Ajustes de tamanho, alças e pequenos reparos.</p></div>
+<div class="dor-card"><div class="dor-icon">👕</div><div class="dor-title">Camisas</div><p class="dor-desc">Troca de botões, ajustes e correção de costuras.</p></div>
+<div class="dor-card"><div class="dor-icon">🧥</div><div class="dor-title">Jaquetas</div><p class="dor-desc">Reparos em forros, mangas e fechamentos.</p></div>
+<div class="dor-card"><div class="dor-icon">🩳</div><div class="dor-title">Shorts</div><p class="dor-desc">Ajustes na cintura e conserto de barras.</p></div>
+<div class="dor-card"><div class="dor-icon">👜</div><div class="dor-title">Bolsas de tecido</div><p class="dor-desc">Reforço de costuras e pequenos reparos.</p></div></div></section>
+<section id="solucao"><div class="solucao-content"><p class="section-label">O que oferecemos</p><h2 class="section-title">Aprenda na prática.<br/>Crie com confiança.</h2><p class="section-sub">O Ateliê Criativo apresenta atividades para quem deseja conhecer o universo da costura e desenvolver novas habilidades.</p><div class="solucao-items">
+<div class="solucao-item"><div class="solucao-num">01</div><div class="solucao-text"><strong>Curso básico de costura</strong><span>Conheça os materiais, a máquina de costura e os primeiros pontos.</span></div></div>
+<div class="solucao-item"><div class="solucao-num">02</div><div class="solucao-text"><strong>Ajustes e reparos</strong><span>Aprenda técnicas para ajustar roupas e consertar peças do dia a dia.</span></div></div>
+<div class="solucao-item"><div class="solucao-num">03</div><div class="solucao-text"><strong>Criação de peças</strong><span>Pratique a confecção de itens simples e desenvolva sua criatividade.</span></div></div></div></div><div class="solucao-visual"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=500&q=85" alt="Materiais de costura"/><blockquote>A criatividade ganha forma quando cada ponto é feito com dedicação.</blockquote><cite>— Ateliê Criativo</cite></div></section>
+<section id="sobre"><div class="sobre-photo"><img src="https://images.unsplash.com/photo-1598300053653-4e4b8c6c1f4a?auto=format&fit=crop&w=900&q=85" alt="Trabalho com tecido e costura"/><div class="sobre-photo-badge"><strong>100%</strong><span>Aprendizado prático</span></div></div><div class="sobre-content"><p class="section-label">Sobre o projeto</p><h2 class="section-title">Ateliê Criativo<br/><em>Curso de Costura.</em></h2><p class="section-sub">O Ateliê Criativo é um espaço pensado para apresentar o mundo da costura de maneira simples e acolhedora. A proposta é ensinar desde os primeiros pontos até técnicas básicas de ajustes e criação de peças.<br/><br/>Com atividades práticas, os alunos podem desenvolver coordenação, criatividade e autonomia para realizar pequenos projetos.</p><div class="sobre-valores"><span class="valor-tag">Criatividade</span><span class="valor-tag">Aprendizado</span><span class="valor-tag">Prática</span><span class="valor-tag">Dedicação</span></div></div></section>
+<section id="resultados"><p class="section-label">Aprenda passo a passo</p><h2 class="section-title">Conhecimentos que você pode desenvolver.</h2><div class="stats-grid"><div class="stat-item"><div class="stat-num">01</div><div class="stat-label">Conhecer tecidos<br/>e materiais</div></div><div class="stat-item"><div class="stat-num">02</div><div class="stat-label">Usar a máquina<br/>de costura</div></div><div class="stat-item"><div class="stat-num">03</div><div class="stat-label">Fazer ajustes<br/>e reparos</div></div><div class="stat-item"><div class="stat-num">04</div><div class="stat-label">Criar peças<br/>simples</div></div></div></section>
+<section id="desejos"><p class="section-label">Por que aprender costura?</p><h2 class="section-title">Uma habilidade para <em>levar para a vida.</em></h2><div class="desejos-grid"><div class="desejo-card"><div class="desejo-emoji">🪡</div><div class="desejo-title">Novas habilidades</div><p class="desejo-desc">Aprenda técnicas úteis para o cotidiano.</p></div><div class="desejo-card"><div class="desejo-emoji">🎨</div><div class="desejo-title">Criatividade</div><p class="desejo-desc">Explore cores, tecidos e diferentes ideias.</p></div><div class="desejo-card"><div class="desejo-emoji">♻️</div><div class="desejo-title">Reaproveitamento</div><p class="desejo-desc">Dê uma nova vida às roupas e aos tecidos.</p></div></div></section>
+<section id="localizacao" style="padding:90px 80px;background:#fff;text-align:center"><p class="section-label">Onde estamos</p><h2 class="section-title">Localização da <em>ETEC</em></h2><p class="section-sub" style="margin:0 auto 24px">ETEC Dr. Renato Cordeiro — Birigui/SP</p><p style="font-size:15px;line-height:1.9;color:#4a3a3a">Rua Ermando Zin, 1531 — Jardim Santana<br/>Birigui – SP | CEP: 16202-407<br/>Telefone: (18) 3649-9800</p><p style="margin-top:24px"><a class="btn-primary" href="https://www.google.com/maps/search/?api=1&query=ETEC+Dr.+Renato+Cordeiro+Birigui" target="_blank" rel="noopener">Ver no mapa</a></p></section>
+<section id="cta"><div class="cta-inner"><p class="section-label">Dê o primeiro ponto</p><h2 class="cta-title">Sua criatividade merece espaço.<br/><strong>Comece a aprender!</strong></h2><p class="cta-sub">Conheça o universo da costura e descubra tudo o que você pode criar com linha, tecido e imaginação.</p><div class="cta-actions"><a href="#localizacao" class="btn-whatsapp">📍 Como chegar</a><a href="https://etecbirigui.com.br/fale-conosco/" class="btn-email" target="_blank" rel="noopener">Informações da ETEC</a></div></div></section>
+<footer><div class="footer-logo" style="color:#C9A84C;font-family:Georgia,serif;font-size:18px;font-weight:bold">ATELIÊ CRIATIVO</div><div class="footer-text">© 2026 Ateliê Criativo — Curso de Costura<br/>Projeto educacional</div><div class="footer-oab">ETEC Dr. Renato Cordeiro<br/>Birigui — SP</div></footer>
+</body></html>
